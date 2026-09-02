@@ -1,0 +1,91 @@
+# ==========================================================
+# Environment Variables & Secrets (CRITICAL)
+# ==========================================================
+.env
+.env.*
+!.env.example
+*.env
+
+# ==========================================================
+# Python & Bytecode
+# ==========================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environments
+venv/
+.venv/
+ENV/
+env/
+env.bak/
+venv.bak/
+
+# ==========================================================
+# Frontend (Node / Vite / React)
+# ==========================================================
+frontend/node_modules/
+node_modules/
+frontend/dist/
+dist/
+dist-ssr/
+*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Vite cache
+.vite/
+
+# ==========================================================
+# Docker Data Volumes (Prevents committing local DBs)
+# ==========================================================
+postgres_data/
+redis_data/
+frontend_node_modules/
+
+# ==========================================================
+# Testing & Code Quality
+# ==========================================================
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+.mypy_cache/
+.ruff_cache/
+
+# ==========================================================
+# IDE & Operating System
+# ==========================================================
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db

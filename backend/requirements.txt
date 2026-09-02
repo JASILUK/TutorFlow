@@ -1,0 +1,38 @@
+# Web Framework & ASGI Server
+fastapi>=0.116.0
+uvicorn[standard]>=0.35.0
+
+# Schema Validation & Settings Management
+pydantic>=2.11.0
+pydantic-settings>=2.10.0
+
+# Database ORM & Driver
+sqlalchemy>=2.0.40
+psycopg[binary]>=3.2.0
+alembic>=1.16.0
+
+# Security, Hashing & Auth
+pyjwt>=2.10.0
+pwdlib[argon2]>=0.2.0
+python-multipart>=0.0.20
+
+# AI & LLM Integrations
+google-genai>=0.1.0
+openai>=1.99.0
+
+# Task Queue & Cache
+celery[redis]>=5.5.0
+redis>=6.0.0
+
+# Email Delivery Provider
+resend>=2.15.0
+sendgrid>=6.11.0
+
+# HTTP Client
+httpx>=0.28.0
+
+# Testing & Linting
+pytest>=8.0.0
+pytest-asyncio>=1.1.0
+pytest-cov>=6.0.0
+ruff>=0.12.0
