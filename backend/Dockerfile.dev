@@ -20,10 +20,6 @@ RUN pip install --upgrade pip && \
 
 COPY . .
 
-# Make sure start.sh is executable inside the container
-RUN chmod +x start.sh
-
 EXPOSE 8000
 
-# Use start.sh as the container entry command
-CMD ["./start.sh"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
