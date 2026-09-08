@@ -1,36 +1,44 @@
 # TutorFlow
 
-A modern, async-first tutoring and student management platform designed with Clean Architecture. TutorFlow leverages a fully containerized microservices stack to manage student pipelines, scheduling, automated notification workflows, and AI-assisted session tracking.
+TutorFlow is a production-ready, full-stack platform built for tutors and educational institutions to manage students, track academic progress, generate AI-powered lesson plans, sync sessions with Google Calendar, and execute background tasks asynchronously.
 
 ---
 
-## Tech Stack
+##  Demo Accounts
 
-* **Backend:** FastAPI (Python 3.11), SQLAlchemy 2.0 (Async), Pydantic v2
-* **Database & Cache:** PostgreSQL 16, Redis 7
-* **Task Queues:** Celery (Worker orchestration for email & AI pipelines)
-* **Frontend:** React 19, TypeScript, Vite, Tailwind CSS, TanStack Query
-* **Infrastructure:** Docker & Docker Compose
+Explore the live platform immediately using these pre-configured test credentials:
+
+| Role | Email | Password |
+| :--- | :--- | :--- |
+| **Tutor / Admin** | `mohdjasil2004@gmail.com` | `jasil123` |
+| **Student** | `jasil4official@gmail.com` | `jaeem123` |
 
 ---
 
-## Project Structure
+##  Key Features
 
-```text
-tutorflow/
-├── backend/
-│   ├── app/
-│   │   ├── api/          # Route controllers and endpoints
-│   │   ├── core/         # Settings, database session, security
-│   │   ├── models/       # SQLAlchemy 2.0 ORM models
-│   │   ├── schemas/      # Pydantic validation schemas
-│   │   └── workers/      # Celery task definitions
-│   ├── Dockerfile
-│   └── requirements.txt
-├── frontend/
-│   ├── src/              # React components, pages, hooks
-│   ├── Dockerfile.dev
-│   └── package.json
-├── docker-compose.yml
-├── .env.example
-└── README.md
+* **Role-Based Workflows:** Tailored dashboards for Tutors and Students.
+* **AI Lesson Planning:** Integrated AI tools to draft customized lesson plans and review student performance.
+* **Asynchronous Processing:** Celery workers powered by Redis handle background jobs (such as notifications and heavy tasks) without blocking the main API thread.
+* **Google Calendar Integration:** Secure OAuth-based connection allowing tutors to auto-sync tutoring sessions directly to their Google Calendar.
+* **Secure Session Architecture:** In-memory token storage paired with `HttpOnly` refresh cookies for high resistance against XSS attacks.
+
+---
+
+##  Tech Stack
+
+* **Frontend:** React 19, Vite, TypeScript, Tailwind CSS, TanStack React Query, Zod, React Router v7.
+* **Backend:** FastAPI, Python 3.11+, SQLAlchemy (Async), PostgreSQL.
+* **Task Queue:** Celery & Redis.
+* **Deployment:** Vercel (Frontend) & Render (Backend Web Service & Celery Worker).
+
+---
+
+##  Local Development Setup
+
+Run TutorFlow locally using Docker Compose by following these steps:
+
+1. **Clone the Repository:**
+   ```bash
+   git clone [https://github.com/JASILUK/TutorFlow.git](https://github.com/JASILUK/TutorFlow.git)
+   cd TutorFlow
