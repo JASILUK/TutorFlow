@@ -8,6 +8,7 @@ celery_app = Celery(
     include=[
         "app.workers.tasks.ai_tasks",
         "app.workers.tasks.email_tasks",
+        "app.workers.tasks.calendar_tasks"
     ],
 )
 

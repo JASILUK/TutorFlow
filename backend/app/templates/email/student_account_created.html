@@ -1,0 +1,101 @@
+{% extends "email/base.html" %}
+
+{% block title %}Your TutorFlow account is ready{% endblock %}
+
+{% block preheader %}Your student account has been created on TutorFlow. Log in with your temporary credentials to begin.{% endblock %}
+
+{% block content %}
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!-- Heading -->
+  <tr>
+    <td style="padding-bottom: 8px;">
+      <h1 style="margin: 0; font-size: 22px; font-weight: 700; line-height: 28px; color: #0f172a; letter-spacing: -0.02em;">
+        Your TutorFlow account is ready
+      </h1>
+    </td>
+  </tr>
+
+  <!-- Greeting & Context -->
+  <tr>
+    <td style="padding-bottom: 24px; font-size: 15px; line-height: 24px; color: #334155;">
+      <p style="margin: 0 0 12px 0;">Hi {{ student_name }},</p>
+      <p style="margin: 0;">
+        Your TutorFlow student account has been set up by your tutor. You can now sign in to access your upcoming sessions, homework assignments, and learning objectives.
+      </p>
+    </td>
+  </tr>
+
+  <!-- Credentials Card -->
+  <tr>
+    <td style="padding-bottom: 24px;">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden;">
+        <tr>
+          <td style="padding: 20px;">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+              <!-- Section Title -->
+              <tr>
+                <td colspan="2" style="padding-bottom: 14px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #64748b;">
+                  Your Login Details
+                </td>
+              </tr>
+              <!-- Email -->
+              <tr>
+                <td valign="top" width="35%" style="padding-bottom: 12px; font-size: 13px; font-weight: 600; color: #475569;">
+                  Email
+                </td>
+                <td valign="top" style="padding-bottom: 12px; font-size: 14px; font-weight: 600; color: #0f172a;">
+                  {{ student_email }}
+                </td>
+              </tr>
+              <!-- Temporary Password -->
+              <tr>
+                <td valign="top" width="35%" style="font-size: 13px; font-weight: 600; color: #475569;">
+                  Temporary Password
+                </td>
+                <td valign="top" style="font-size: 15px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-weight: 700; color: #0f172a;">
+                  <span style="background-color: #e2e8f0; padding: 2px 6px; border-radius: 4px;">{{ temporary_password }}</span>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- Login CTA Button -->
+  <tr>
+    <td align="center" style="padding-bottom: 24px;">
+      <table border="0" cellpadding="0" cellspacing="0" style="margin: 0 auto;">
+        <tr>
+          <td align="center" bgcolor="#2563eb" style="border-radius: 8px;">
+            <a href="{{ login_url }}" target="_blank" rel="noopener noreferrer" style="display: inline-block; padding: 14px 28px; font-size: 14px; font-weight: 600; color: #ffffff; text-decoration: none; border-radius: 8px; background-color: #2563eb;">
+              Log in to TutorFlow
+            </a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- Security Instructions Notice -->
+  <tr>
+    <td style="padding-bottom: 24px;">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #fffbeb; border: 1px solid #fef3c7; border-radius: 8px;">
+        <tr>
+          <td style="padding: 14px 18px; font-size: 13px; line-height: 20px; color: #92400e;">
+            <strong>Important Security Notice:</strong> The password provided above is an initial temporary password. For your security, please update your password immediately after logging in by visiting <strong>Settings &gt; Account</strong> in your student portal.
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- Security Reassurance -->
+  <tr>
+    <td style="font-size: 12px; line-height: 18px; color: #94a3b8; border-top: 1px solid #f1f5f9; padding-top: 16px;">
+      If you were not expecting an account on TutorFlow, please disregard this email or contact your tutor.
+    </td>
+  </tr>
+</table>
+{% endblock %}

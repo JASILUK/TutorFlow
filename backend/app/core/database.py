@@ -26,6 +26,9 @@ AsyncSessionLocal = async_sessionmaker(
     expire_on_commit=False,  # Prevents attribute reload errors post-commit
 )
 
+# Alias to satisfy imports expecting async_session_maker
+async_session_maker = AsyncSessionLocal
+
 
 # 3. Base Class for All Models
 class Base(AsyncAttrs, DeclarativeBase):

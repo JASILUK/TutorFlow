@@ -1,13 +1,13 @@
 from functools import lru_cache
-from pydantic import computed_field
+from pydantic import Field, computed_field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    """
-    TutorFlow application settings.
-    All production secrets and service URLs must be supplied
-    through environment variables.
+    """TutorFlow application settings.
+
+    All production secrets and service URLs must be supplied through
+    environment variables.
     """
 
     model_config = SettingsConfigDict(
@@ -18,12 +18,16 @@ class Settings(BaseSettings):
     )
 
     # ==========================================================
-    # Application
+    # Application & URLs
     # ==========================================================
     APP_NAME: str = "TutorFlow API"
     APP_ENV: str = "development"
     DEBUG: bool = False
     API_V1_STR: str = "/api/v1"
+    FRONTEND_APP_URL: str = Field(
+        default="http://localhost:5173",
+        description="Frontend base URL for student invitation & action links",
+    )
 
     # ==========================================================
     # Security / JWT
@@ -31,6 +35,7 @@ class Settings(BaseSettings):
     SECRET_KEY: str = "change_this_to_a_secure_secret_key_32_characters_min"
     JWT_ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 1440
+    REFRESH_TOKEN_EXPIRE_DAYS: int = 7
 
     # ==========================================================
     # Database
@@ -47,22 +52,35 @@ class Settings(BaseSettings):
     # ==========================================================
     # AI (OpenAI & Gemini)
     # ==========================================================
+
+    AI_PROVIDER: str = Field(
+        default="gemini",
+        description="Active AI provider: 'gemini' or 'openai'",
+    )
     OPENAI_API_KEY: str = ""
     OPENAI_MODEL: str = "gpt-4o-mini"
     GEMINI_API_KEY: str = ""
-    GEMINI_MODEL: str = "gemini-2.5-flash"
+    GEMINI_MODEL: str = "gemini-3.6-flash"  
 
     # ==========================================================
-    # Email 
+    # Email
     # ==========================================================
     RESEND_API_KEY: str = ""
     SENDGRID_API_KEY: str = ""
     EMAIL_FROM: str = "TutorFlow <notifications@tutorflow.dev>"
 
     # ==========================================================
-    # CORS (Stored as raw string to prevent JSON parsing crashes)
+    # CORS
     # ==========================================================
     BACKEND_CORS_ORIGINS: str = "http://localhost:5173,http://127.0.0.1:5173"
+
+
+    # ==========================================================
+    # Google OAuth & Calendar
+    # ==========================================================
+    GOOGLE_CLIENT_ID: str = ""
+    GOOGLE_CLIENT_SECRET: str = ""
+    GOOGLE_REDIRECT_URI: str = ""
 
     @computed_field
     @property

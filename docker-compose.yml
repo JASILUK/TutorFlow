@@ -43,8 +43,9 @@ services:
     env_file:
       - .env
     environment:
-      DATABASE_URL: postgresql+psycopg_async://${POSTGRES_USER:-tutorflow}:${POSTGRES_PASSWORD:-tutorflow_dev_password}@postgres:5432/${POSTGRES_DB:-tutorflow}
-      REDIS_URL: redis://redis:6379/0
+      - OAUTHLIB_INSECURE_TRANSPORT=1
+      - DATABASE_URL=postgresql+psycopg_async://${POSTGRES_USER:-tutorflow}:${POSTGRES_PASSWORD:-tutorflow_dev_password}@postgres:5432/${POSTGRES_DB:-tutorflow}
+      - REDIS_URL=redis://redis:6379/0
     ports:
       - "${BACKEND_PORT:-8000}:8000"
     volumes:
@@ -72,8 +73,9 @@ services:
     env_file:
       - .env
     environment:
-      DATABASE_URL: postgresql+psycopg_async://${POSTGRES_USER:-tutorflow}:${POSTGRES_PASSWORD:-tutorflow_dev_password}@postgres:5432/${POSTGRES_DB:-tutorflow}
-      REDIS_URL: redis://redis:6379/0
+      - OAUTHLIB_INSECURE_TRANSPORT=1
+      - DATABASE_URL=postgresql+psycopg_async://${POSTGRES_USER:-tutorflow}:${POSTGRES_PASSWORD:-tutorflow_dev_password}@postgres:5432/${POSTGRES_DB:-tutorflow}
+      - REDIS_URL=redis://redis:6379/0
     volumes:
       - ./backend:/app
     depends_on:

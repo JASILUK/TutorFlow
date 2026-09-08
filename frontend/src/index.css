@@ -1,3 +1,115 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* src/index.css */
+@import "tailwindcss";
+
+:root {
+  /* Surface & Canvas */
+  --tf-bg: #F8FAFC;
+  --tf-surface: #FFFFFF;
+  --tf-surface-subtle: #F1F5F9;
+  --tf-surface-hover: #F8FAFC;
+  
+  /* Text */
+  --tf-text-primary: #0F172A;
+  --tf-text-secondary: #475569;
+  --tf-text-muted: #94A3B8;
+
+  /* Borders & Dividers */
+  --tf-border: #E2E8F0;
+  --tf-border-hover: #CBD5E1;
+
+  /* Brand Blue */
+  --tf-brand: #315FEA;
+  --tf-brand-hover: #284FC7;
+  --tf-brand-active: #1E3EB4;
+  --tf-brand-subtle: #EEF2FF;
+
+  /* Semantic Feedback */
+  --tf-success: #16A34A;
+  --tf-warning: #D97706;
+  --tf-error: #DC2626;
+  --tf-info: #2563EB;
+
+  /* Dimensions */
+  --tf-sidebar-width: 256px;
+  --tf-topbar-height: 60px;
+}
+
+@layer base {
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--tf-bg);
+    color: var(--tf-text-primary);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* TutorFlow Micro-transitions & Motion System                         */
+/* ------------------------------------------------------------------ */
+
+.tf-flow-traveler {
+  will-change: transform;
+  animation: tf-sweep 1.8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+.tf-flow-traveler--delayed {
+  animation-delay: 1150ms;
+}
+
+.tf-traveler-primary {
+  background: linear-gradient(
+    100deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.35) 40%,
+    #60a5fa 50%,
+    rgba(255, 255, 255, 0.95) 55%,
+    #315fea 66%,
+    transparent 85%
+  );
+  mix-blend-mode: screen;
+}
+
+.tf-traveler-white {
+  background: linear-gradient(
+    100deg,
+    transparent 25%,
+    rgba(255, 255, 255, 0.55) 45%,
+    #ffffff 55%,
+    transparent 80%
+  );
+}
+
+@keyframes tf-sweep {
+  from { transform: translateX(-120%); }
+  to { transform: translateX(120%); }
+}
+
+.tf-brand-spin {
+  will-change: transform;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
+  transform-origin: 50% 50%;
+}
+
+.tf-spin-fast {
+  animation-name: tf-spin;
+  animation-duration: 0.75s;
+}
+
+.tf-spin-normal {
+  animation-name: tf-spin;
+  animation-duration: 1.1s;
+}
+
+@keyframes tf-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tf-flow-traveler,
+  .tf-brand-spin {
+    animation: none;
+    transform: none;
+  }
+}

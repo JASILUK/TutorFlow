@@ -1,22 +1,38 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+
 from app.core.config import settings
+from app.core.error_handlers import register_error_handlers
+from app.api.v1.router import api_router  # our consolidated v1 endpoints
 
-app = FastAPI(
-    title=settings.APP_NAME,
-    version="1.0.0",
-    docs_url=f"{settings.API_V1_STR}/docs",
-    openapi_url=f"{settings.API_V1_STR}/openapi.json",
-)
 
-# CORS Configuration using computed property
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=settings.cors_origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+def create_application() -> FastAPI:
+    app = FastAPI(
+        title="TutorFlow API",
+        version="1.0.0",
+        docs_url="/api/docs",
+        redoc_url="/api/redoc",
+    )
+
+    # 1. CORS Configuration
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=settings.cors_origins,
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+
+    # 2. Register Global Error Handlers (Unified JSON contract)
+    register_error_handlers(app)
+
+    # 3. Register API Routers
+    app.include_router(api_router, prefix="/api/v1")
+
+    return app
+
+
+app = create_application()
 
 
 @app.get("/health", tags=["Health"])
