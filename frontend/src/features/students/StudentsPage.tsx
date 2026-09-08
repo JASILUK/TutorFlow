@@ -243,7 +243,7 @@ const StudentTableRow: React.FC<RowProps> = ({ student, onOpen }) => {
 
   const initials = fullName
     .split(" ")
-    .map((n) => n[0])
+    .map((n:any) => n[0])
     .slice(0, 2)
     .join("")
     .toUpperCase();
@@ -306,7 +306,7 @@ const StudentMobileCard: React.FC<{ student: StudentProfileResponse }> = ({
 
   const initials = fullName
     .split(" ")
-    .map((n) => n[0])
+    .map((n:any) => n[0])
     .slice(0, 2)
     .join("")
     .toUpperCase();

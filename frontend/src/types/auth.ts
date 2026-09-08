@@ -9,6 +9,7 @@ export interface User {
   is_verified: boolean;
   created_at: string;
 }
+export type UserResponse = User;
 
 export interface AuthResponse {
   access_token: string;

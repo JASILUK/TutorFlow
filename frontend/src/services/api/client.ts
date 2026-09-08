@@ -15,9 +15,11 @@ export const getAccessToken = (): string | null => {
   return inMemoryAccessToken;
 };
 
-// 2. DYNAMIC BASE URL NORMALIZATION
+// 2. DYNAMIC BASE URL NORMALIZATION (Safely handles Vite env in TypeScript)
 const rawBaseUrl: string =
-  import.meta.env.VITE_API_BASE_URL || "http://localhost:8000/api/v1";
+  (import.meta as { env?: { VITE_API_BASE_URL?: string; VITE_API_URL?: string } }).env?.VITE_API_BASE_URL ||
+  (import.meta as { env?: { VITE_API_BASE_URL?: string; VITE_API_URL?: string } }).env?.VITE_API_URL ||
+  "http://localhost:8000/api/v1";
 
 // Ensure no trailing slash so path concatenation is deterministic
 const cleanBaseUrl = rawBaseUrl.replace(/\/+$/, "");

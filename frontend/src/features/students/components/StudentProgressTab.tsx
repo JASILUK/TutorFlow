@@ -138,7 +138,7 @@ export const StudentProgressTab: React.FC<StudentProgressTabProps> = ({
   if (isGenerating && !progress) {
     return (
       <Card className="py-14 text-center space-y-3 bg-[#F8FAFC]/50 rounded-xl border border-dashed border-[#CBD5E1] select-none">
-        <BrandLoader size="md" variant="blue" speed="fast" />
+        <BrandLoader size="md" variant="primary" speed="fast" />
         <div className="space-y-0.5">
           <p className="text-sm font-semibold text-[#0F172A]">
             Synthesizing Learning Progress…
@@ -182,7 +182,7 @@ export const StudentProgressTab: React.FC<StudentProgressTabProps> = ({
           >
             {isGenerating ? (
               <>
-                <BrandLoader size="sm" variant="blue" speed="fast" />
+                <BrandLoader size="sm" variant="primary" speed="fast" />
                 <span>Regenerating…</span>
               </>
             ) : (

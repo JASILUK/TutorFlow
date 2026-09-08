@@ -6,10 +6,13 @@ import { TutorFlowLogo } from "@/components/brand/TutorFlowLogo";
 
 interface TopbarProps {
   onOpenMobileNav: () => void;
+  onToggleDesktopSidebar: () => void;
+  isSidebarCollapsed: boolean;
   titleContext?: string;
 }
 
-export const Topbar: React.FC<TopbarProps> = ({ onOpenMobileNav, titleContext }) => {
+export const Topbar: React.FC<TopbarProps> = ({ onOpenMobileNav,onToggleDesktopSidebar, 
+  isSidebarCollapsed, titleContext }) => {
   return (
     <header className="h-[60px] bg-white border-b border-[#E2E8F0] px-4 md:px-8 flex items-center justify-between shrink-0 select-none z-20">
       {/* Left: Mobile trigger & context */}

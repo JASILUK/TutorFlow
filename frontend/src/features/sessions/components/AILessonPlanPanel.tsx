@@ -155,7 +155,7 @@ export const AILessonPlanPanel: React.FC<AILessonPlanPanelProps> = ({
               >
                 {isGenerating ? (
                   <>
-                    <BrandLoader size="sm" variant="blue" speed="fast" />
+                    <BrandLoader size="sm" variant="primary" speed="fast" />
                     <span>Regenerating…</span>
                   </>
                 ) : (

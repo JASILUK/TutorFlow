@@ -111,7 +111,7 @@ export const SessionReviewPanel: React.FC<SessionReviewPanelProps> = ({
       {/* Generating State */}
       {isGenerating && (
         <div className="py-8 text-center space-y-3 bg-[#F8FAFC]/50 rounded-xl border border-dashed border-[#CBD5E1]">
-          <BrandLoader size="md" variant="blue" speed="fast" />
+          <BrandLoader size="md" variant="primary" speed="fast" />
           <div className="space-y-0.5">
             <p className="text-xs font-semibold text-[#0F172A]">Synthesizing Lesson Debrief…</p>
             <p className="text-[11px] text-[#64748B]">
