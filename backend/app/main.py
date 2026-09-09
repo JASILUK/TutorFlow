@@ -12,6 +12,7 @@ def create_application() -> FastAPI:
         version="1.0.0",
         docs_url="/api/docs",
         redoc_url="/api/redoc",
+        debug=settings.DEBUG
     )
 
     # 1. CORS Configuration

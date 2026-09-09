@@ -30,8 +30,7 @@ def set_refresh_cookie(response: Response, raw_token: str) -> None:
         max_age=COOKIE_MAX_AGE,
         httponly=True,
         secure=IS_PRODUCTION,
-        samesite="lax",
-        path="/api/v1/auth",
+        samesite="none" if IS_PRODUCTION else "lax",  # "none" for cross-site Vercel<->Render in prod, "lax" for local        path="/api/v1/auth",
     )
 
 
@@ -42,7 +41,7 @@ def clear_refresh_cookie(response: Response) -> None:
         path="/api/v1/auth",
         httponly=True,
         secure=IS_PRODUCTION,
-        samesite="lax",
+        samesite="none" if IS_PRODUCTION else "lax",  # "none" for cross-site Vercel<->Render in prod, "lax" for local
     )
 
 
