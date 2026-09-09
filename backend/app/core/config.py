@@ -23,6 +23,7 @@ class Settings(BaseSettings):
     APP_NAME: str = "TutorFlow API"
     APP_ENV: str = "development"
     DEBUG: bool = False
+    ENVIRONMENT : str = "development"
     API_V1_STR: str = "/api/v1"
     FRONTEND_APP_URL: str = Field(
         default="http://localhost:5173",
